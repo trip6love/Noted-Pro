@@ -6,5 +6,5 @@ const app = express();
 const notesData = require('./db/db.json');
 
 app.listen(3001,() => {
-    console.log ('Server is now live on port 3001');
+    console.log (`Server is now live on port ${PORT}!`);
 });
