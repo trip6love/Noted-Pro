@@ -5,6 +5,14 @@ const express = require('express');
 const app = express();
 const notesData = require('./db/db.json');
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static('public'));
+
+// Add API routes //
+
+
+
 app.listen(3001,() => {
     console.log (`Server is now live on port ${PORT}!`);
 });
