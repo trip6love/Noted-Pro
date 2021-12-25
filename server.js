@@ -23,8 +23,30 @@ app.get('*', (req, res) => {
 });
 
 // Add function to create a new note //
+function newNote(body, array) {
+    const newNote = body;
+    
+    if (!Array.isArray(array))
+        array = [];
+    
+    if (array.length === 0)
+        array.push(0);
+    
+    body.id = array[0];
+    array[0]++;
+
+    array.push(newNote);
+    fs.writeFileSync(
+        path.join(__dirname, './db/db.json'),
+        JSON.stringify(array, null, 2)
+    );
+    return newNote;
+};
+
+// Add a post //
 
 
-app.listen(3001,() => {
+// Listening to PORT and logging the in use server number //
+app.listen(PORT,() => {
     console.log (`Server is now live on port ${PORT}!`);
 });
