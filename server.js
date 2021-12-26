@@ -22,8 +22,12 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
 // Add function to create a new note //
-function newNote(body, array) {
+function addnewNote(body, array) {
     const newNote = body;
     
     if (!Array.isArray(array))
@@ -44,7 +48,10 @@ function newNote(body, array) {
 };
 
 // Add a post //
-
+app.post('/api/notes', (req, res) => {
+    const newNote = addnewNote(req.body, notesData);
+    res.json(newNote);
+});
 
 // Listening to PORT and logging the in use server number //
 app.listen(PORT,() => {
