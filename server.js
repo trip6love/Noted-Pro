@@ -4,6 +4,7 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 const notesData = require('./db/db.json');
+const { v4: uuidv4 } = require('uuid');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
